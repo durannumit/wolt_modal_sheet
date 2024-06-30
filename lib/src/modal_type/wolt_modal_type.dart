@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:wolt_modal_sheet/src/modal_type/wolt_modal_dismiss_direction.dart';
 import 'package:wolt_modal_sheet/wolt_modal_sheet.dart';
 
 export 'wolt_bottom_sheet_type.dart';

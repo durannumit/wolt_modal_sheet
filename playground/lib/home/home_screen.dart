@@ -1,6 +1,9 @@
 import 'package:demo_ui_components/demo_ui_components.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:playground/home/custom_sheets/floating_bottom_sheet_type.dart';
+import 'package:playground/home/custom_sheets/top_notification_sheet_type.dart';
+import 'package:playground/home/pages/custom_sheet_pages/new_order_notification_page.dart';
 import 'package:playground/home/pages/root_sheet_page.dart';
 import 'package:wolt_modal_sheet/wolt_modal_sheet.dart';
 
@@ -122,7 +125,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       const Text('RTL'),
                     ],
                   ),
-                  const SizedBox(height: 4),
+                  const SizedBox(height: 16),
                   SizedBox(
                     width: _contentWidth,
                     child: WoltElevatedButton(
@@ -182,12 +185,38 @@ class _HomeScreenState extends State<HomeScreen> {
                       child: const Text('Show Modal Sheet'),
                     ),
                   ),
+                  const SizedBox(height: 12),
+                  SizedBox(
+                    width: _contentWidth,
+                    child: WoltElevatedButton(
+                      onPressed: () {
+                        WoltModalSheet.show(
+                          barrierDismissible: false,
+                          context: context,
+                          modalTypeBuilder: (_) => const TopNotificationSheetType(),
+                          pageListBuilder: (_) => [NewOrderNotificationPage()],
+                        );
+                      },
+                      child: const Text('Show Custom Modal Sheet'),
+                    ),
+                  )
                 ],
               ),
             ),
           ),
         );
       }),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            WoltModalSheet.show(
+              barrierDismissible: false,
+              context: context,
+              modalTypeBuilder: (_) => const FloatingBottomSheetType(),
+              pageListBuilder: (_) => [NewOrderNotificationPage()],
+            );
+          },
+          child: const Icon(Icons.notifications_active),
+        )
     );
   }
 }
